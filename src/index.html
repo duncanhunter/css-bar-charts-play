@@ -5,72 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .chart {
+            display: grid;
+            grid-template-columns: repeat(100, 1fr);
+            gap: .5em 0;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            background: #ffd100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.25rem 0.5rem
+        }
+    </style>
 </head>
 
+<script>
+    const array = [{ value: 2, name: "foo" }, { value: 32, name: "bar" }];
+
+    const listElement = document.querySelector('ul');
+
+    array.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        li.style.gridColumnEnd = `span ${item.value}`;
+        listElement.appendChild(li);
+    });
+</script>
+
 <body>
-    <h1>My Scores</h1>
-    <div>
-        <canvas id="myChart" style="width:500px; height:300px;"></canvas>
-    </div>
+    <ul class="chart">
+        <li style=" grid-column-end: span 9; grid-row-start:1; grid-row-end:2;">
+            Baseball:
+            <span>9</span>
+        </li>
 
-    <script>
-        const ctx = document.getElementById('myChart');
-        const scores = {
-            Baseball: 9,
-            Football: 11,
-            Basketball: 5,
-            Soccer: 11,
-            Hockey: 6,
-            Volleyball: 6,
-        };
+        <li style=" grid-column-end: span 77; grid-row-start:2; grid-row-end:3;">
+            Football:
+            <span>77</span>
+        </li>
 
-        const scoreLabels = Object.keys(scores);
-        const scoreData = Object.values(scores);
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: scoreLabels,
-                datasets: [{
-                    label: 'Scores',
-                    data: scoreData,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                maintainAspectRatio: false,
-                responsive: true,
-                layout: {
-                    padding: {
-                        top: 5,
-                        left: 15,
-                        right: 15,
-                        bottom: 5
-                    }
-                },
-                plugins: {
-                    datalabels: {
-                        align: 'end',
-                        anchor: 'end',
-                        formatter: function (value, context) {
-                            return value;
-                        },
-                        color: '#000000'
-                    }
-                }
-            },
-            plugins: [ChartDataLabels]
-        });
-    </script>
-
+        <li style=" grid-column-end: span 5; grid-row-start:3; grid-row-end:4; ">
+            Basketball:
+            <span>5</span>
+        </li>
+    </ul>
 </body>
 
 </html>

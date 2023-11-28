@@ -1,0 +1,28 @@
+<body>
+  <script src="bar-chart.js"></script>
+  <style>
+    /* If no color or text-color props set these will apply */
+    bar-chart-item {
+      --bar-background-color: rgb(212, 61, 61);
+      --bar-text-color: white;
+      /* 
+      Only works if no :host level styles adn wan to register global ccs properties
+      :root {
+        bar-chart-item {
+            --bar-background-color: rgb(212, 61, 61);
+         --bar-text-color: white;
+        } 
+      */
+    }
+  </style>
+  <bar-chart percentage="false">
+    <bar-chart-item label="Baseball" value="9"></bar-chart-item>
+    <bar-chart-item color="green" label="Football" value="77"></bar-chart-item>
+    <bar-chart-item color="red" label="Basketball" value="5"></bar-chart-item>
+  </bar-chart>
+  <bar-chart>
+    <bar-chart-item label="Baseball" value="9"></bar-chart-item>
+    <bar-chart-item color="green" label="Football" value="77"></bar-chart-item>
+    <bar-chart-item color="red" label="Basketball" value="5"></bar-chart-item>
+  </bar-chart>
+</body>

@@ -30,19 +30,6 @@
     </style>
 </head>
 
-<script>
-    const array = [{ value: 2, name: "foo" }, { value: 32, name: "bar" }];
-
-    const listElement = document.querySelector('ul');
-
-    array.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.name;
-        li.style.gridColumnEnd = `span ${item.value}`;
-        listElement.appendChild(li);
-    });
-</script>
-
 <body>
     <ul class="chart">
         <li style=" grid-column-end: span 9; grid-row-start:1; grid-row-end:2;">
